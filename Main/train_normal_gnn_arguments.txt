@@ -1,0 +1,35 @@
+Debug Arguments requirement to run selected script
+
+# Run LightGCN
+".." --data_root "../../data/instance_Pokec_0.1" --results_root "../../data/gnn_Pokec_0.1/lightgcn/normal" --model "lightgcn" --config_file "../config/common_gnn-config.yaml" --embs_lr 0.02 --from_pretrained 0 --freeze_nodes_emb 0 --file_pretrained_embs "../../data/gnn_Pokec_0.1/lightgcn/1layer-0/normal/out_emb_table.pt" --final_layer_mlp 0  --scaling 0
+
+## LightGCN w/SSNet
+".." --data_root "../../data/instance_Pokec_0.1" --results_root "../../data/gnn_Pokec_0.1/lightgcn/normal" --model "lightgcn" --config_file "../config/common_gnn-config.yaml" --embs_lr 0.02 --from_pretrained 0 --freeze_nodes_emb 0 --file_pretrained_embs "../../data/gnn_Pokec_0.1/lightgcn/1layer-0/normal/out_emb_table.pt" --final_layer_mlp 1  --scaling 1
+
+##LightGCN w/FFN
+".." --data_root "../../data/instance_Pokec_0.1" --results_root "../../data/gnn_Pokec_0.1/lightgcn/normal" --model "lightgcn" --config_file "../config/common_gnn-config.yaml" --embs_lr 0.02 --from_pretrained 0 --freeze_nodes_emb 0 --file_pretrained_embs "../../data/gnn_Pokec_0.1/lightgcn/1layer-0/normal/out_emb_table.pt" --final_layer_mlp 1  --scaling 0 --ffn 1
+
+## LightGCN w/Additive Network
+".." --data_root "../../data/instance_Pokec_0.1" --results_root "../../data/gnn_Pokec_0.1/lightgcn/normal" --model "lightgcn" --config_file "../config/common_gnn-config.yaml" --embs_lr 0.02 --from_pretrained 0 --freeze_nodes_emb 0 --file_pretrained_embs "../../data/gnn_Pokec_0.1/lightgcn/1layer-0/normal/out_emb_table.pt" --final_layer_mlp 1  --scaling 0 --ffn 0 --res_ffn 1
+
+
+
+# Run PPR
+".." --data_root "../../data/instance_Pokec_0.1" --results_root "../../data/gnn_Pokec_0.1/ppr/undirected-top100" --num_walks 1000 --walk_length 30 --alpha 0.7 --topk 100
+
+# Run PPRGO
+".." --data_root "../../data/instance_Pokec_0.1" --results_root "../../data/gnn_Pokec_0.1/ppr/undirected-top100" --model "pprgo" --config_file "../config/common_gnn-config.yaml"  --ppr_data_root "../../data/gnn_Pokec_0.1/ppr/undirected-top100" --topk 32 --embs_lr 0.01 --from_pretrained 0 --freeze_nodes_emb 0 --file_pretrained_embs "../../data/gnn_Pokec_0.1/pprgo/normal/base_emb_table.pt" --final_layer_mlp 0 --scaling 0
+
+# PPRGo with SSNet
+".." --data_root "../../data/instance_Pokec_0.1" --results_root "../../data/gnn_Pokec_0.1/ppr/undirected-top100" --model "pprgo" --config_file "../config/common_gnn-config.yaml"  --ppr_data_root "../../data/gnn_Pokec_0.1/ppr/undirected-top100" --topk 32 --embs_lr 0.01 --from_pretrained 0 --freeze_nodes_emb 0 --file_pretrained_embs "../../data/gnn_Pokec_0.1/pprgo/normal/base_emb_table.pt" --final_layer_mlp 1 --scaling 1
+
+
+
+# Run PPRLightGCN
+".." --data_root "../../data/instance_Pokec_0.1" --results_root "../../data/gnn_Pokec_0.1/pprlightgcn/normal" --model "pprlightgcn" --config_file "../config/common_gnn-config.yaml"  --ppr_data_root "../../data/gnn_Pokec_0.1/ppr/undirected-top100" --topk 32 --embs_lr 0.01 --from_pretrained 0 --freeze_nodes_emb 0 --file_pretrained_embs "../../data/gnn_Pokec_0.1/pprgo/normal/base_emb_table.pt" --final_layer_mlp 0 --scaling 0
+
+# GAT
+".." --data_root "../../data/instance_Pokec_0.1" --results_root "../../data/gnn_Pokec_0.1/gat/normal" --model "gat" --config_file "../config/common_gnn-config.yaml" --embs_lr 0.02 --from_pretrained 0 --freeze_nodes_emb 0 --file_pretrained_embs "../../data/gnn_Pokec_0.1/gat/1layer-0/normal/out_emb_table.pt" --final_layer_mlp 0  --scaling 0 --layer_sample 0
+
+# Debug issue with Running PPRTrainingGrpah
+../DataModifications/PPRTrainingGraph.py  ".." --data_root "../../data/instance_Pokec_0.1" --results_root "../../data/gnn_Pokec_0.1" --model "pprlightgcn"  --topk 15
